@@ -1,0 +1,15 @@
+- name: create db
+  #shell: mongo --eval="db.getSiblingDB('test').createCollection('empty')"
+  shell: mongo -u "{{ mongodb_admin_user }}" -p "{{ mongodb_admin_password }}" --authenticationDatabase admin --eval="db.getSiblingDB('test').createCollection('empty')"
+
+#mongo social --port 28000 -u user -p password --authenticationDatabase admin
+#- name: Create MongoDB dev user 
+#  mongodb_user:
+#    login_user: "{{ mongodb_admin_user }}"
+#    login_password: "{{ mongodb_admin_password }}"
+#    login_port: "27017"
+#    database: "admin"
+#    name: "{{ mongodb_user }}"
+#    password: "{{ mongodb_password }}"
+#    roles:
+#      - { db: "{{ feature_mongodb_database }}", role: "readWrite" }
